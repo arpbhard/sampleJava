@@ -74,12 +74,22 @@ public class HomeController extends Controller {
         return originMatches(origin);
     }
 
+    /**
+     * Checks whether the given Origin header value refers to an allowed local origin.
+     *
+     * <p>Returns true only if {@code origin} is a valid URI whose host is {@code "localhost"}
+     * and whose port is either {@code 9091} or {@code 19001}. Returns false for {@code null},
+     * for syntactically invalid URIs, or for origins that do not match the host/port criteria.
+     *
+     * @param origin the Origin header value to validate (may be {@code null})
+     * @return {@code true} if the origin is a valid localhost URI on an allowed port; {@code false} otherwise
+     */
     private boolean originMatches(String origin) {
         if (origin == null) return false;
         try {
             URI url = new URI(origin);
             return url.getHost().equals("localhost")
-                    && (url.getPort() == 9000 || url.getPort() == 19001);
+                    && (url.getPort() == 9091 || url.getPort() == 19001);
         } catch (Exception e ) {
             return false;
         }
