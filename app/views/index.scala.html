@@ -1,4 +1,4 @@
-@(url: String, webJarsUtil: org.webjars.play.WebJarsUtil)
+@(url: String)
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @webJarsUtil.locate("bootstrap.min.css").css()
-        @webJarsUtil.locate("bootstrap-theme.min.css").css()
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@@3.4.1/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        @webJarsUtil.locate("jquery.min.js").script()
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <script language="javascript">
                 var $messages = $("#messages"),
