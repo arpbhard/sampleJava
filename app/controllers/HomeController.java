@@ -74,6 +74,15 @@ public class HomeController extends Controller {
         return originMatches(origin);
     }
 
+    /**
+     * Validates whether the given Origin URI refers to an allowed localhost origin.
+     *
+     * <p>Returns true only if the origin is a parseable URI with host "localhost" and port 9091 or 19001.
+     * Any null input, parse error, or non-matching host/port returns false.
+     *
+     * @param origin the Origin header value (expected to be a URI string)
+     * @return true if the origin matches an allowed localhost origin and port, false otherwise
+     */
     private boolean originMatches(String origin) {
         if (origin == null) return false;
         try {
